@@ -22,15 +22,15 @@ def result():
         lista_formulario=request.form.to_dict()
         lista_formulario=list(lista_formulario.values())
         lista_formulario= list(map(int,  lista_formulario))
-        from IPython import embed; embed()
         resultado=previsao_diabetes(lista_formulario)
-#       if int(resultado) == 1:
-#           previsao = 'Possui diabetes'
-#       else:
-#           previsao = 'Nao possui diabetes'
 
-#         # retorna o resultado para uma pagina html
-#         return render_template("resultado.html", previsao=previsao)
+        if int(resultado) == 1:
+            previsao = 'Possui diabetes'
+        else:
+            previsao = 'Nao possui diabetes'
+
+        # retorna o resultado para uma pagina html
+        return render_template("resultado.html", previsao=previsao)
 
 if __name__ == "__main__":
     app.run(debug=True, reload=True)
